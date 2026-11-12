@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jungle Shop</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="logo" href="#">JUNGLE<span>SHOP</span></a>
+  <nav>
+    <a href="#shop">SHOP</a>
+    <a href="#featured">FEATURED</a>
+    <a href="#about">ABOUT</a>
+  </nav>
+  <button class="cart-button" onclick="toggleCart()">
+    🛒 CART <span id="cartCount">0</span>
+  </button>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="tag">THE COSMETIC STORE</div>
+    <h1>FIND YOUR<br><span>NEW LOOK.</span></h1>
+    <p>Discover awesome cosmetics, accessories and collectibles.</p>
+    <a href="#shop" class="main-button">EXPLORE SHOP →</a>
+  </div>
+  <div class="hero-art">
+    <div class="hero-circle">🐵</div>
+    <div class="floating f1">⭐</div>
+    <div class="floating f2">🍌</div>
+    <div class="floating f3">🌴</div>
+  </div>
+</section>
+
+<section class="featured" id="featured">
+  <div>
+    <span class="small-label">HAND PICKED</span>
+    <h2>FEATURED ITEMS</h2>
+  </div>
+  <div class="featured-box">
+    <div class="featured-icon">🍌</div>
+    <div>
+      <h3>Banana Crown</h3>
+      <p>A legendary look for your next adventure.</p>
+    </div>
+    <button onclick="addToCart('Banana Crown', 250)">ADD · 250</button>
+  </div>
+</section>
+
+<main id="shop">
+  <div class="shop-heading">
+    <div>
+      <span class="small-label">EXPRESS YOURSELF</span>
+      <h2>THE SHOP</h2>
+    </div>
+    <div class="currency">💎 <span>YOUR BALANCE: 1,000</span></div>
+  </div>
+
+  <div class="filters">
+    <button class="filter active" onclick="filterItems('All',this)">ALL ITEMS</button>
+    <button class="filter" onclick="filterItems('Hats',this)">HATS</button>
+    <button class="filter" onclick="filterItems('Backpacks',this)">BACKPACKS</button>
+    <button class="filter" onclick="filterItems('Badges',this)">BADGES</button>
+    <button class="filter" onclick="filterItems('Other',this)">OTHER</button>
+  </div>
+
+  <div class="product-grid" id="productGrid"></div>
+</main>
+
+<section class="about" id="about">
+  <h2>MAKE YOUR LOOK UNIQUE.</h2>
+  <p>Find your favorite cosmetics and build your own style.</p>
+  <a href="#shop" class="main-button">BROWSE COSMETICS</a>
+</section>
+
+<footer>
+  <div class="logo">JUNGLE<span>SHOP</span></div>
+  <p>Unofficial fan-made cosmetic shop. Not affiliated with Gorilla Tag or Another Axiom.</p>
+  <p>© 2026 Jungle Shop</p>
+</footer>
+
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<aside class="cart-panel" id="cartPanel">
+  <div class="cart-header">
+    <h2>YOUR CART</h2>
+    <button onclick="toggleCart()">✕</button>
+  </div>
+  <div id="cartItems"></div>
+  <div class="cart-total">
+    <span>TOTAL</span>
+    <strong id="cartTotal">0 💎</strong>
+  </div>
+  <button class="checkout" onclick="checkout()">CHECKOUT</button>
+  <p class="cart-note">Demo storefront — no real purchases.</p>
+</aside>
+
+<script src="script.js"></script>
+</body>
+</html>
