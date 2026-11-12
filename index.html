@@ -4,102 +4,144 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jungle Shop</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="theme-color" content="#f5f4ef">
+  <title>MONKE MARKET — Fan Store</title>
+  <meta name="description" content="A fan-made Gorilla Tag inspired merchandise storefront.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<header class="topbar">
-  <a class="logo" href="#">JUNGLE<span>SHOP</span></a>
-  <nav>
-    <a href="#shop">SHOP</a>
-    <a href="#featured">FEATURED</a>
-    <a href="#about">ABOUT</a>
-  </nav>
-  <button class="cart-button" onclick="toggleCart()">
-    🛒 CART <span id="cartCount">0</span>
-  </button>
-</header>
-
-<section class="hero">
-  <div class="hero-content">
-    <div class="tag">THE COSMETIC STORE</div>
-    <h1>FIND YOUR<br><span>NEW LOOK.</span></h1>
-    <p>Discover awesome cosmetics, accessories and collectibles.</p>
-    <a href="#shop" class="main-button">EXPLORE SHOP →</a>
+  <div class="announcement">
+    <span>✦</span> FAN-MADE STORE — NOT AFFILIATED WITH GORILLA TAG <span>✦</span>
   </div>
-  <div class="hero-art">
-    <div class="hero-circle">🐵</div>
-    <div class="floating f1">⭐</div>
-    <div class="floating f2">🍌</div>
-    <div class="floating f3">🌴</div>
-  </div>
-</section>
 
-<section class="featured" id="featured">
-  <div>
-    <span class="small-label">HAND PICKED</span>
-    <h2>FEATURED ITEMS</h2>
-  </div>
-  <div class="featured-box">
-    <div class="featured-icon">🍌</div>
-    <div>
-      <h3>Banana Crown</h3>
-      <p>A legendary look for your next adventure.</p>
+  <header class="header">
+    <button class="menu-button" id="menuButton" aria-label="Open menu">☰</button>
+    <a class="logo" href="#"><span class="logo-mark">M</span> MONKE<span class="logo-light">MARKET</span></a>
+
+    <nav class="nav" id="nav">
+      <a href="#shop">SHOP ALL</a>
+      <a href="#featured">FEATURED</a>
+      <a href="#about">ABOUT</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="icon-button" id="searchButton" aria-label="Search">⌕</button>
+      <button class="cart-button" id="cartButton">BAG <span id="cartCount">0</span></button>
     </div>
-    <button onclick="addToCart('Banana Crown', 250)">ADD · 250</button>
-  </div>
-</section>
+  </header>
 
-<main id="shop">
-  <div class="shop-heading">
-    <div>
-      <span class="small-label">EXPRESS YOURSELF</span>
-      <h2>THE SHOP</h2>
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="dot"></span> THE FAN-MADE MERCH DROP</div>
+        <h1>MADE FOR<br>THE <span>JUNGLE.</span></h1>
+        <p>Bring a little jungle energy wherever you go. Explore the collection and find your next favorite piece.</p>
+        <a class="primary-button" href="#shop">SHOP THE COLLECTION <span>↗</span></a>
+        <div class="hero-note">INDEPENDENT FAN PROJECT · EST. 2026</div>
+      </div>
+      <div class="hero-art">
+        <div class="hero-orbit orbit-one"></div>
+        <div class="hero-orbit orbit-two"></div>
+        <div class="hero-sticker">JUNGLE<br>APPROVED<br>✳</div>
+        <div class="hero-product">
+          <div class="shirt-shape">
+            <span>MONKE<br>MODE</span>
+          </div>
+        </div>
+        <div class="hero-caption">DROP 001 / THE JUNGLE COLLECTION</div>
+      </div>
+    </section>
+
+    <div class="ticker">
+      <div>JUNGLE STYLE <span>✳</span> GOOD VIBES ONLY <span>✳</span> FIND YOUR FIT <span>✳</span> JUNGLE STYLE <span>✳</span> GOOD VIBES ONLY <span>✳</span> FIND YOUR FIT <span>✳</span></div>
     </div>
-    <div class="currency">💎 <span>YOUR BALANCE: 1,000</span></div>
+
+    <section class="shop-section" id="shop">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">THE COLLECTION</div>
+          <h2>SHOP THE DROP<span>.</span></h2>
+        </div>
+        <div class="shop-count" id="productCount">06 ITEMS</div>
+      </div>
+
+      <div class="shop-toolbar">
+        <div class="filters" id="filters">
+          <button class="filter active" data-filter="all">ALL ITEMS</button>
+          <button class="filter" data-filter="apparel">APPAREL</button>
+          <button class="filter" data-filter="accessories">ACCESSORIES</button>
+          <button class="filter" data-filter="collectibles">COLLECTIBLES</button>
+        </div>
+        <label class="sort-label">SORT
+          <select id="sortSelect">
+            <option value="featured">Featured</option>
+            <option value="low">Price: low to high</option>
+            <option value="high">Price: high to low</option>
+            <option value="az">Name: A–Z</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="search-panel" id="searchPanel">
+        <input id="searchInput" type="search" placeholder="Search the collection..." aria-label="Search products">
+        <button id="closeSearch" aria-label="Close search">×</button>
+      </div>
+
+      <div class="product-grid" id="productGrid"></div>
+      <div class="empty-state" id="emptyState" hidden>No products found. Try another search.</div>
+    </section>
+
+    <section class="feature-banner" id="featured">
+      <div class="feature-image">
+        <div class="feature-circle">✳</div>
+        <div class="feature-words">JUNGLE<br>ENERGY.</div>
+      </div>
+      <div class="feature-copy">
+        <div class="eyebrow">A LITTLE SOMETHING DIFFERENT</div>
+        <h2>YOUR JUNGLE.<br>YOUR STYLE.</h2>
+        <p>Whether you're exploring, hanging out, or just showing off your style, there's something here for you.</p>
+        <a href="#shop" class="text-link">EXPLORE THE DROP <span>↗</span></a>
+      </div>
+    </section>
+
+    <section class="about-section" id="about">
+      <div class="eyebrow">WHO WE ARE</div>
+      <h2>BUILT BY FANS.<br>MADE FOR FUN.</h2>
+      <p>Monke Market is an independent fan-made concept store. It is not an official Gorilla Tag shop and is not affiliated with Another Axiom.</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a class="logo footer-logo" href="#"><span class="logo-mark">M</span> MONKE<span class="logo-light">MARKET</span></a>
+    <span>INDEPENDENT FAN-MADE CONCEPT STORE</span>
+    <span>© 2026 MONKE MARKET</span>
+  </footer>
+
+  <div class="overlay" id="overlay"></div>
+
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping bag">
+    <div class="drawer-header">
+      <h2>YOUR BAG <span id="drawerCount">(0)</span></h2>
+      <button class="close-button" id="closeCart" aria-label="Close cart">×</button>
+    </div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-footer">
+      <div class="subtotal"><span>SUBTOTAL</span><strong id="subtotal">$0.00</strong></div>
+      <p class="demo-note">Demo storefront — checkout and payments are not enabled.</p>
+      <button class="checkout-button" id="checkoutButton">DEMO CHECKOUT</button>
+    </div>
+  </aside>
+
+  <div class="product-modal" id="productModal" role="dialog" aria-modal="true" aria-label="Product details">
+    <button class="modal-close" id="closeModal" aria-label="Close">×</button>
+    <div id="modalContent"></div>
   </div>
 
-  <div class="filters">
-    <button class="filter active" onclick="filterItems('All',this)">ALL ITEMS</button>
-    <button class="filter" onclick="filterItems('Hats',this)">HATS</button>
-    <button class="filter" onclick="filterItems('Backpacks',this)">BACKPACKS</button>
-    <button class="filter" onclick="filterItems('Badges',this)">BADGES</button>
-    <button class="filter" onclick="filterItems('Other',this)">OTHER</button>
-  </div>
-
-  <div class="product-grid" id="productGrid"></div>
-</main>
-
-<section class="about" id="about">
-  <h2>MAKE YOUR LOOK UNIQUE.</h2>
-  <p>Find your favorite cosmetics and build your own style.</p>
-  <a href="#shop" class="main-button">BROWSE COSMETICS</a>
-</section>
-
-<footer>
-  <div class="logo">JUNGLE<span>SHOP</span></div>
-  <p>Unofficial fan-made cosmetic shop. Not affiliated with Gorilla Tag or Another Axiom.</p>
-  <p>© 2026 Jungle Shop</p>
-</footer>
-
-<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
-<aside class="cart-panel" id="cartPanel">
-  <div class="cart-header">
-    <h2>YOUR CART</h2>
-    <button onclick="toggleCart()">✕</button>
-  </div>
-  <div id="cartItems"></div>
-  <div class="cart-total">
-    <span>TOTAL</span>
-    <strong id="cartTotal">0 💎</strong>
-  </div>
-  <button class="checkout" onclick="checkout()">CHECKOUT</button>
-  <p class="cart-note">Demo storefront — no real purchases.</p>
-</aside>
-
-<script src="script.js"></script>
+  <div class="toast" id="toast"></div>
+  <script src="script.js"></script>
 </body>
 </html>
+
